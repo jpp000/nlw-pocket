@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import { db } from "../db";
 import { goalCompletions, goals } from "../db/schema";
-import { count, DefaultLogger, eq, gte, lte, sql } from "drizzle-orm";
+import { count, eq, gte, lte, sql } from "drizzle-orm";
 import { and } from "drizzle-orm";
 
 export async function getWeekPendingGoals() {
