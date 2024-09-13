@@ -21,6 +21,26 @@ app.get("/completion-goals", async () => {
 });
 
 app.post(
+  "/goals",
+  {
+    schema: {
+      body: z.object({
+        title: z.string(),
+        desiredWeeklyFrequency: z.number().int().min(1).max(7),
+      }),
+    },
+  },
+  async (req) => {
+    const { title, desiredWeeklyFrequency } = req.body;
+
+    await createGoal({
+      title,
+      desiredWeeklyFrequency,
+    });
+  }
+);
+
+app.post(
   "/completions",
   {
     schema: {
